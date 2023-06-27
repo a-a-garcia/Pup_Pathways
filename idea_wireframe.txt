@@ -1,0 +1,43 @@
+NAME - Pup Pathways
+
+The purpose of this app is to allow users to chart the route they walk their dog(s), and be able to see if their routes intersect with any other users. Users should be able to chart what times/days they walk. I am hoping this would be useful for connecting dog walkers who walk the same path to socialize (or even avoid socialization with dogs that are hostile). 
+
+
+MINIMUM VIABLE PRODUCT FEATURES
+# Account Creation
+-Ability to create an account.
+    -first name
+    -last name
+    -email
+    -password
+    -dog's name
+    -dog breed
+
+-Ability to login.
+
+# Account management
+
+# Main interface
+-Utilize a Maps API (Google maps probably easiest, most accessible?)
+
+-ask permissions to access user's geolocation.
+
+-Displays a map with a radius around their current geolocation. It should populate with paths that users who already created their paths.
+
+-ability to move the map around.
+
+-ability to enter a path creation mode? where they can click/click-drag mouse to create their path. Each individual user's path should be a different color. 
+
+-once the user finishes clicking/click-dragging, a window should open or user will be directed to create a path. There, they can give their path a name and more importantly set what DAYS and TIME PERIOD in which they walk said path.
+
+-a path should be clickable, and once clicked, displays a window with that corresponding user's info. It should also display path's name, days, time period.
+
+2.0 FEATURES
+# Account Settings
+    -upload profile photo
+    -upload pet photo
+    -color choice for when they create their paths
+
+#some people have more than one dog. So, would need to create a list of dictionaries, each dictionary could represent one dog.
+
+in the context of OOP, need a class People() and class Pet()

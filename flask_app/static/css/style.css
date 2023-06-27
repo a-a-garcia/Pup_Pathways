@@ -1,0 +1,165 @@
+/* universal stylings */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+background-color: #E3ECFA;
+width: 100vw;
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;
+font-family: 'Lilita One', cursive !important;
+}
+
+
+.card, header {
+    box-shadow: rgba(44, 36, 6, 0.4) 0px 0px 0px 2px, rgba(44, 30, 6, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset !important;
+}
+
+#wrapper {
+    width: 50%;
+    margin: 5% auto; 
+}
+
+/* Login Page */
+.card.login-card {
+    text-align: center;
+    background-size: cover;
+    width: 60vw;
+    height: 100vh;
+    background-color: #E3ECFA;
+    margin: auto;
+    margin-top: 0%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+#img-background {
+    height: 100vh;
+    width: 100vw;
+}
+
+.login-card img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5% 0;
+}
+
+.login-card input, button, a, .form-floating {
+    margin-bottom: 5% !important; 
+}
+
+.img-background {
+    background-color: #E3ECFA;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+.img-background img {
+    max-width: 100%;
+    object-fit: contain;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login-card form {
+    margin-top: 20%;
+    color: black;
+    width: 30%;
+    padding: 3%;
+    background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+.login-card h2, h1 {
+    color: white !important;
+}
+
+
+#home-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* dashboard */
+
+
+form {
+    text-wrap: none;
+}
+
+#dashboard-left {
+    margin-right: 2.5%
+}
+
+#dashboard-right {
+    margin-left: 2.5%
+}
+
+#dashboard-navigation {
+    width: 50%;
+    margin-bottom: 0 !important;
+}
+
+#dashboard-navigation a {
+    width: 25%;
+    margin-bottom: 0 !important;
+}
+
+#logo {
+    width: 100px;
+}
+
+header {
+    background-color: rgba(20, 20, 20, 0.9) !important;
+}
+
+header h2 {
+    color: white !important;
+    margin-left: 1%;
+    text-wrap: none;
+}
+
+header a {
+    width: 100%;
+}
+
+#logo-text {
+    margin-bottom: 0 !important;
+}
+
+.not-login-card {
+    background-color: rgba(20, 20, 20) !important;
+    text-align: center;
+}
+
+.not-login-card h1, h2{
+    color: white !important;
+    margin-bottom: 2%;
+}
+
+.validation_errors {
+    color: red !important;
+    background-color: black !important;
+}
+
+td.table-left {
+    white-space: nowrap !important;
+}
+
+/* fixing card sizing */
+table { 
+    padding-bottom: 0 !important;
+}
+
