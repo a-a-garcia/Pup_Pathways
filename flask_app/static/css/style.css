@@ -26,14 +26,30 @@ font-family: 'Lilita One', cursive !important;
 }
 
 /* Login Page */
+h1 {
+    margin: 0;
+    color: black !important;
+    font-family: 'Caveat', cursive;
+    font-size: 2em;
+    text-shadow: 2px 2px 8px rgb(128, 128, 128);
+}
+
+#login_logo {
+    width: 100%;
+}
+
+#login_logo img {
+    height: 2em;
+    margin: 0 1%;
+}
+
 .card.login-card {
     text-align: center;
     background-size: cover;
-    width: 60vw;
+    width: 25vw;
     height: 100vh;
     background-color: #E3ECFA;
     margin: auto;
-    margin-top: 0%;
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -63,24 +79,23 @@ font-family: 'Lilita One', cursive !important;
     justify-content: flex-end;
     align-items: center;
     overflow: hidden;
+    height: 100vh;
 }
 
 .img-background img {
-    max-width: 100%;
-    object-fit: contain;
-    height: 100vh;
-    width: 100vw;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
 }
 
 .login-card form {
-    margin-top: 20%;
     color: black;
-    width: 30%;
     padding: 3%;
     background-color: rgba(0, 0, 0, 0.9) !important;
+    width: 75%;
 }
 
-.login-card h2, h1 {
+.login-card h2 {
     color: white !important;
 }
 
