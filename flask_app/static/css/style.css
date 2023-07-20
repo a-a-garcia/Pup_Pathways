@@ -6,13 +6,13 @@
 }
 
 body {
-background-color: #E3ECFA;
-width: 100vw;
-background-size: contain;
-background-repeat: no-repeat;
-background-position: center center;
-background-attachment: fixed;
-font-family: 'Lilita One', cursive !important;
+    background-color: #E3ECFA;
+    width: 100vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: 'Josefin Sans', sans-serif !important; 
 }
 
 
@@ -28,19 +28,28 @@ font-family: 'Lilita One', cursive !important;
 /* Login Page */
 h1 {
     margin: 0;
-    color: black !important;
-    font-family: 'Caveat', cursive;
+    color: white !important;
+    font-family: 'Caprasimo', cursive;
     font-size: 2em;
-    text-shadow: 2px 2px 8px rgb(128, 128, 128);
+    -webkit-text-stroke: 1px black;
+    color: white;
+    text-shadow:
+        3px 3px 0 #000,
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
 }
+
+
 
 #login_logo {
     width: 100%;
 }
 
 #login_logo img {
-    height: 2em;
-    margin: 0 1%;
+    height: 3rem;
+    margin: 0 2%;
 }
 
 .card.login-card {
@@ -83,7 +92,6 @@ h1 {
 }
 
 .img-background img {
-    object-fit: cover;
     height: 100%;
     width: 100%;
 }
@@ -91,7 +99,7 @@ h1 {
 .login-card form {
     color: black;
     padding: 3%;
-    background-color: rgba(0, 0, 0, 0.9) !important;
+    background-color: rgba(23, 79, 124, 0.9) !important;
     width: 75%;
 }
 
@@ -106,6 +114,27 @@ h1 {
     align-items: center;
     height: 100vh;
 }
+
+
+/*registration*/ 
+#return_button {
+    width: 10%;
+}
+
+.page_holder {
+    min-height:100vh;
+    overflow: auto;
+    background-image: url(../images/imageedit_2_4803320937.png);
+    background-size: 40%; /* Set the background image size to 50% of its original size */
+    background-position: left bottom; /* Move the background image to the bottom left corner */
+    background-repeat: no-repeat;
+    background-color: #E3ECFA;
+}
+
+#register_header{
+    background: url(../images/clouds_gif.gif);
+}
+
 
 /* dashboard */
 
@@ -122,14 +151,8 @@ form {
     margin-left: 2.5%
 }
 
-#dashboard-navigation {
-    width: 50%;
-    margin-bottom: 0 !important;
-}
-
 #dashboard-navigation a {
     width: 25%;
-    margin-bottom: 0 !important;
 }
 
 #logo {
@@ -137,7 +160,7 @@ form {
 }
 
 header {
-    background-color: rgba(20, 20, 20, 0.9) !important;
+    background-color: rgba(23, 79, 124, 0.9) !important;
 }
 
 header h2 {
@@ -155,7 +178,7 @@ header a {
 }
 
 .not-login-card {
-    background-color: rgba(20, 20, 20) !important;
+    background-color: rgba(23, 79, 124, 0.9) !important;
     text-align: center;
 }
 

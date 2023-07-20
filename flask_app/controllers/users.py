@@ -12,6 +12,9 @@ from flask_app.models import user #import entire file, rather than class, to avo
 def index():
     return render_template('login.html')
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 # Update Users Controller
 
