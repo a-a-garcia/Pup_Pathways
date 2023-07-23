@@ -55,7 +55,7 @@ h1 {
 .card.login-card {
     text-align: center;
     background-size: cover;
-    width: 25vw;
+    width: 50vw;
     height: 100vh;
     background-color: #E3ECFA;
     margin: auto;
@@ -100,7 +100,6 @@ h1 {
     color: black;
     padding: 3%;
     background-color: rgba(23, 79, 124, 0.9) !important;
-    width: 75%;
 }
 
 .login-card h2 {
@@ -124,17 +123,23 @@ h1 {
 .page_holder {
     min-height:100vh;
     overflow: auto;
-    background-image: url(../images/imageedit_2_4803320937.png);
-    background-size: 40%; /* Set the background image size to 50% of its original size */
-    background-position: left bottom; /* Move the background image to the bottom left corner */
-    background-repeat: no-repeat;
     background-color: #E3ECFA;
+    background-image: url(../images/transparent_dog.png);
+    background-size: 20%; 
+    background-position: right bottom;
+    background-repeat: no-repeat;
 }
 
 #register_header{
     background: url(../images/clouds_gif.gif);
 }
 
+#register_card {
+    /* background-image: url(../images/sitting_dog.png); src = https://dribbble.com/shots/5727589-Happy-family/attachments/11022176?mode=media */
+    /* background-size: 25%; Set the background image size to 50% of its original size */
+    /* background-position: right bottom; Move the background image to the bottom left corner */
+    /* background-repeat: no-repeat; */
+}
 
 /* dashboard */
 

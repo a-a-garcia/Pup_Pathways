@@ -27,11 +27,12 @@
             </div>
         </header>
         <div id="wrapper" class="d-flex justify-content-center align-items-center">
-            <div class="card w-75">
+            <div class="card w-75" id="register_card">
                 <div class="card-body not-login-card">
                     <form action="/register/submit" method="POST">
                         <h2>Welcome to Pup Pathways!</h2>
-                        <h3>Get started by creating an account!</h3>
+                        <h3>Get started by creating an account.</h3>
+                        <h3>First, fill out this information about yourself..</h3>
                         
                         {% with messages = get_flashed_messages() %}
                             {% if messages %}
