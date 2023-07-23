@@ -124,21 +124,31 @@ h1 {
     min-height:100vh;
     overflow: auto;
     background-color: #E3ECFA;
-    background-image: url(../images/transparent_dog.png);
-    background-size: 20%; 
     background-position: right bottom;
     background-repeat: no-repeat;
+}
+
+#register_page {
+    background-image: url(../images/account-creation-human-transparent.png);
+    background-size: 30%; 
+}
+
+#register_2_page {
+    background-image: url(../images/transparent_dog.png);
+    background-size: 20%; 
 }
 
 #register_header{
     background: url(../images/clouds_gif.gif);
 }
 
-#register_card {
-    /* background-image: url(../images/sitting_dog.png); src = https://dribbble.com/shots/5727589-Happy-family/attachments/11022176?mode=media */
-    /* background-size: 25%; Set the background image size to 50% of its original size */
-    /* background-position: right bottom; Move the background image to the bottom left corner */
-    /* background-repeat: no-repeat; */
+h3 {
+    color:white !important;
+}
+
+textarea#about_dog.form-control {
+    height: 200px !important;
+    width: 300px !important;
 }
 
 /* dashboard */

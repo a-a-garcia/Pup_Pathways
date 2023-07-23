@@ -7,12 +7,16 @@ from flask_app.models import user #import entire file, rather than class, to avo
 def show_registration():
     return render_template('register.html')
 
-@app.route('/register/submit', methods=['POST'])
+@app.route('/register/submit_user_info', methods=['POST'])
 def submit_registration():
     if not user.User.validate_user(request.form):
         return redirect('/register')
     user.User.create_user(request.form)
     return redirect('/account_creation/success')
+
+@app.route('/register/2')
+def show_registration_2():
+    return render_template('register_two.html')
 
 @app.route('/account_creation/success')
 def account_creation_success():
