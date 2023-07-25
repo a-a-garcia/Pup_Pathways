@@ -29,11 +29,29 @@
         <div id="wrapper" class="d-flex justify-content-center align-items-center">
             <div class="card w-75">
                 <div class="card-body not-login-card">
-                    <form action="/register/submit_user_info" method="POST">
+                    <form action="/register/submit_user_info" method="POST" class="w-75 mx-auto form_wrap">
                         <h2>Welcome to Pup Pathways!</h2>
                         <h3>Get started by creating an account.</h3>
-                        <h3>First, fill out this information about yourself..</h3>
                         
+                        <div class="progress_header">
+                            <ul>
+                                <li class="active form_1_progressbar">
+                                    <div>
+                                        <p>1</p>
+                                    </div>
+                                </li>
+                                <li class="form_2_progressbar">
+                                    <div>
+                                        <p>2</p>
+                                    </div>
+                                </li>
+                                <li class="form_3_progressbar">
+                                    <div>
+                                        <p>3</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         {% with messages = get_flashed_messages() %}
                             {% if messages %}
                                 {% for message in messages %}
@@ -43,53 +61,48 @@
                                 {% endfor %}
                             {% endif %}
                         {% endwith %}
-    
-                        <div class="container">
-                            <div class="row">
-                                <!-- Left Column -->
-                                <div class="col d-flex flex-column justify-content-center align-items-center">
-                                    <div class="form-floating w-75">
-                                        <input type="text" class="form-control" placeholder="Enter your first name" name="first_name">
-                                        <label for="floatingInput">First Name</label>
-                                    </div>
-                                    <div class="form-floating w-75">
-                                        <input type="text" class="form-control" placeholder="Enter your last name" name="last_name">
-                                        <label for="floatingInput">Last Name</label>
-                                    </div>
-                                    <div class="form-floating w-75">
-                                        <input type="email" class="form-control" placeholder="name@example.com" name="email">
-                                        <label for="floatingInput">Email address</label>
-                                    </div>
+                        <div class="form_1 data_info">
+                            <h2>Your Info</h2>
+                            <div class="form_container">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Enter your first name" name="first_name">
+                                    <label for="floatingInput">First Name</label>
                                 </div>
-                        
-                                <!-- Right Column -->
-                                <div class="col d-flex flex-column justify-content-center align-items-center">
-                                    <div class="form-floating w-75">
-                                        <input type="text" class="form-control" placeholder="Your pet's breed" name="pet_breed">
-                                        <label for="floatingInput">Your birthday</label>
-                                    </div>
-                                    <div class="form-floating w-75">
-                                        <input type="password" class="form-control" placeholder="Password" name="password">
-                                        <label for="floatingPassword">Password</label>
-                                    </div>
-                                    <div class="form-floating w-75">
-                                        <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password">
-                                        <label for="floatingPassword">Confirm Password</label>
-                                    </div>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Enter your last name" name="last_name">
+                                    <label for="floatingInput">Last Name</label>
                                 </div>
-                            </div>
-                        
-                            <!-- Sign Up Button -->
-                            <div class="row d-flex justify-content-center align-items-center mt-4">
-                                <button class="btn btn-outline-light w-25" type="submit">Continue..</button>
-                            </div>
-                        
-                            <!-- Return to Sign In Button -->
-                            <div class="row d-flex justify-content-center align-items-center" id="dashboard-navigation">
-                                <a href="/" class="btn btn-outline-light">Return To Sign In</a>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Your pet's breed" name="pet_breed">
+                                    <label for="floatingInput">Your birthday</label>
+                                </div>
                             </div>
                         </div>
                         
+                        <div class="btns_wrap"></div>
+                        
+                        <div class="form-floating">
+                            <input type="email" class="form-control" placeholder="name@example.com" name="email">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password">
+                            <label for="floatingPassword">Confirm Password</label>
+                        </div>
+                
+                        <!-- Sign Up Button -->
+                        <div class="d-flex justify-content-center align-items-center mt-4">
+                            <button class="btn btn-outline-light w-50" type="submit">Continue..</button>
+                        </div>
+                
+                        <!-- Return to Sign In Button -->
+                        <div class="d-flex justify-content-center align-items-center" id="dashboard-navigation">
+                            <a href="/" class="btn btn-outline-light">Return To Sign In</a>
+                        </div>
                     </form>
                 </div>
             </div>
