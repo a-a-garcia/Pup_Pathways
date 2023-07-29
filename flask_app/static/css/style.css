@@ -85,7 +85,7 @@ h1 {
 
 .login-card input, button, a, .form-floating {
     margin-bottom: 5% !important; 
-    transition: 0.75s ease !important;
+    transition: 1s ease !important;
 }
 
 .img-background {
