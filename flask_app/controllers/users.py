@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, redirect, request, session
+from flask import render_template, redirect, request, session, jsonify
 from flask_app.models import user #import entire file, rather than class, to avoid circular imports. may need to import more than one file if you have multiple tables.
 
 # Create Users Controller
@@ -7,12 +7,18 @@ from flask_app.models import user #import entire file, rather than class, to avo
 def show_registration():
     return render_template('register.html')
 
-@app.route('/register/submit_user_info', methods=['POST'])
+@app.route('/submit_registration', methods=['POST'])
 def submit_registration():
-    if not user.User.validate_user(request.form):
-        return redirect('/register')
-    user.User.create_user(request.form)
-    return redirect('/account_creation/success')
+    if request.method == 'POST':
+        # For testing purposes, simply return a success message in JSON format
+        return jsonify({"message": "REGISTRATION SUCCESS"})
+
+# @app.route('/register/submit_user_info', methods=['POST'])
+# def submit_registration():
+#     if not user.User.validate_user(request.form):
+#         return redirect('/register')
+#     user.User.create_user(request.form)
+#     return redirect('/account_creation/success')
 
 #-WORK IN PROGRESS- STEP BY STEP REGISTRATION FORM
 # @app.route('/register', methods=['GET', 'POST'])

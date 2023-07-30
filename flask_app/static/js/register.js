@@ -19,6 +19,8 @@ var form_2_progressbar = document.querySelector(".form_2_progressbar")
 
 var form_3_progressbar = document.querySelector(".form_3_progressbar")
 
+var done_btn = document.querySelector(".btn_done")
+
 // adding event listeners
 
 
@@ -74,3 +76,40 @@ form_3_back_btn.addEventListener("click", function(){
     // decrements progress bar
     form_3_progressbar.classList.remove("active");
 });
+
+let currentForm = form_1;
+
+//using AJAX to handle form submission
+done_btn.addEventListener("click", function(){
+    if (validateForm(currentForm)) {
+        //serialize form data
+        const formData = new FormData(document.getElementById("registration_form"));
+
+        //Perform AJAX form submission using fetch API
+        fetch("/submit_registration", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams(formData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok.")
+            }
+            return response.json();
+        })
+        .then(data => {
+            //handle success response. eventually you need to re-route
+            alert("REGISTRATION SUCCESS.")
+        })
+        .catch(error => {
+            //handle failure response. re-route to sign up page.
+            alert("REGISTRATION FAILED.")
+        })
+    }
+})
+
+function validateForm() {
+    return true;
+}

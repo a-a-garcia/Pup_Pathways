@@ -47,99 +47,94 @@
                     </li>
                 </ul>
             </div>
-        
-            <div class="form_wrap d-flex justify-content-center">
-                <div class="form_1 data_info w-50">
-                    <h2>Signup Info</h2>
-                    <form action="">
-                        <div class="form_container">
-                            <div class="form-floating mb-4">
-                                <input class="form-control" type="text" name="email" id="floatingEmailInput" placeholder="name@example.com">
-                                <label for="floatingEmailInput" id="floatingEmailLabel">Enter your email address</label>
+            <form action="" method="POST" id="registration_form">
+                <div class="form_wrap d-flex justify-content-center">
+                    <div class="form_1 data_info w-50">
+                        <h2>Signup Info</h2>
+                            <div class="form_container">
+                                <div class="form-floating mb-4">
+                                    <input class="form-control" type="text" name="email" id="floatingEmailInput" placeholder="name@example.com">
+                                    <label for="floatingEmailInput" id="floatingEmailLabel">Enter your email address</label>
+                                </div>
+                                <div class="form-floating mb-4">
+                                    <input class="form-control" type="password" name="password" id="floatingPasswordInput" placeholder="null">
+                                    <label for="floatingPasswordInput" id="floatingPasswordLabel">Make a password</label>
+                                </div>
+                                <div class="form-floating mb-4">
+                                    <input class="form-control" type="password" name="confirm_password" id="floatingConfirmPasswordInput" placeholder="null">
+                                    <label for="floatingConfirmPasswordInput" id="floatingConfirmPasswordLabel">Confirm your password</label>
+                                </div>
                             </div>
-                            <div class="form-floating mb-4">
-                                <input class="form-control" type="password" name="password" id="floatingPasswordInput" placeholder="null">
-                                <label for="floatingPasswordInput" id="floatingPasswordLabel">Make a password</label>
+                    </div>
+                    <div class="form_2 data_info w-50"  style="display: none">
+                        <h2>Personal Info</h2>
+                            <div class="form_container">
+                                <div class="input_wrap">
+                                    <label for="user_name">User Name</label>
+                                    <input type="text" name="user_name" id="user_name">
+                                </div>
+                                <div class="input_wrap">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" name="first_name" id="first_name">
+                                </div>
+                                <div class="input_wrap">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" name="last_name" id="last_name">
+                                </div>
                             </div>
-                            <div class="form-floating mb-4">
-                                <input class="form-control" type="password" name="confirm_password" id="floatingConfirmPasswordInput" placeholder="null">
-                                <label for="floatingConfirmPasswordInput" id="floatingConfirmPasswordLabel">Confirm your password</label>
+                    </div>
+                    <div class="form_3 data_info w-50"  style="display: none">
+                        <h2>Professional Info</h2>
+                            <div class="form_container">
+                                <div class="input_wrap">
+                                    <label for="current_company">Current Company</label>
+                                    <input type="text" name="current_company" id="current_company">
+                                </div>
+                                <div class="input_wrap">
+                                    <label for="total_experience">Total Experience</label>
+                                    <input type="text" name="total_experience" id="total_experience">
+                                </div>
+                                <div class="input_wrap">
+                                    <label for="designation">Designation</label>
+                                    <input type="text" name="designation" id="designation">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-                <div class="form_2 data_info w-50"  style="display: none">
-                    <h2>Personal Info</h2>
-                    <form action="">
-                        <div class="form_container">
-                            <div class="input_wrap">
-                                <label for="user_name">User Name</label>
-                                <input type="text" name="user_name" id="user_name">
-                            </div>
-                            <div class="input_wrap">
-                                <label for="first_name">First Name</label>
-                                <input type="text" name="first_name" id="first_name">
-                            </div>
-                            <div class="input_wrap">
-                                <label for="last_name">Last Name</label>
-                                <input type="text" name="last_name" id="last_name">
-                            </div>
-                        </div>
-                    </form>
+                <div class="btns_wrap">
+                    <div class="common_btns form_1_btns">
+                        <button type="button" class="btn_next">Next
+                            <span class="icon">
+                                <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="common_btns form_2_btns" style="display: none">
+                        <button type="button"  class="btn_back">
+                            <span class="icon">
+                                <ion-icon name="arrow-back-circle-outline"></ion-icon>
+                            </span>
+                            Back
+                        </button>
+                        <button type="button"  class="btn_next">Next
+                            <span class="icon">
+                                <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="common_btns form_3_btns"  style="display: none">
+                        <button type="button"  class="btn_back">
+                            <span class="icon">
+                                <ion-icon name="arrow-back-circle-outline"></ion-icon>
+                            </span>
+                            Back
+                        </button>
+                        <button type="button" class="btn_done">Done
+                            <span class="icon"></span>
+                        </button>
+                    </div>
                 </div>
-                <div class="form_3 data_info w-50"  style="display: none">
-                    <h2>Professional Info</h2>
-                    <form action="">
-                        <div class="form_container">
-                            <div class="input_wrap">
-                                <label for="current_company">Current Company</label>
-                                <input type="text" name="current_company" id="current_company">
-                            </div>
-                            <div class="input_wrap">
-                                <label for="total_experience">Total Experience</label>
-                                <input type="text" name="total_experience" id="total_experience">
-                            </div>
-                            <div class="input_wrap">
-                                <label for="designation">Designation</label>
-                                <input type="text" name="designation" id="designation">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="btns_wrap">
-                <div class="common_btns form_1_btns">
-                    <button type="button" class="btn_next">Next
-                        <span class="icon">
-                            <ion-icon name="arrow-forward-circle-outline"></ion-icon>
-                        </span>
-                    </button>
-                </div>
-                <div class="common_btns form_2_btns" style="display: none">
-                    <button type="button"  class="btn_back">
-                        <span class="icon">
-                            <ion-icon name="arrow-back-circle-outline"></ion-icon>
-                        </span>
-                        Back
-                    </button>
-                    <button type="button"  class="btn_next">Next
-                        <span class="icon">
-                            <ion-icon name="arrow-forward-circle-outline"></ion-icon>
-                        </span>
-                    </button>
-                </div>
-                <div class="common_btns form_3_btns"  style="display: none">
-                    <button type="button"  class="btn_back">
-                        <span class="icon">
-                            <ion-icon name="arrow-back-circle-outline"></ion-icon>
-                        </span>
-                        Back
-                    </button>
-                    <button type="button" class="btn_done">Done
-                        <span class="icon"></span>
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>        
     </div>
 </body>
