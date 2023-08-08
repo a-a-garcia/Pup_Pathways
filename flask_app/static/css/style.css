@@ -149,6 +149,19 @@ h1 {
     background: url(../images/clouds_gif.gif);
 }
 
+.error-container {
+    color: red;
+    background-color: white;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 10% 0;
+    padding: 2%;
+    display: none;
+}
+
+#first-name-error, #last-name-error {
+}
+
 h3 {
     color:white !important;
 }
