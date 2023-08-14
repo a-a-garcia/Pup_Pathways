@@ -32,6 +32,10 @@ MINIMUM VIABLE PRODUCT FEATURES
 
 -a path should be clickable, and once clicked, displays a window with that corresponding user's info. It should also display path's name, days, time period.
 
+1.2 FEATURES
+# Validate user email on registration, part 1 of registration form via AJAX to check is user's email is in DB.
+# Fix email registration input. User can put example@email.comX -> X can be any letter (not number or special character) and somehow pass validation.
+
 2.0 FEATURES
 # Account Settings
     -upload profile photo
@@ -41,3 +45,4 @@ MINIMUM VIABLE PRODUCT FEATURES
 #some people have more than one dog. So, would need to create a list of dictionaries, each dictionary could represent one dog.
 
 in the context of OOP, need a class People() and class Pet()
+

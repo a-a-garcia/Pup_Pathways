@@ -149,7 +149,7 @@ h1 {
     background: url(../images/clouds_gif.gif);
 }
 
-.error-container {
+.error-container, .error-container-2, .error-container-3 {
     color: red;
     background-color: white;
     text-align: center;
@@ -224,7 +224,9 @@ header a {
 
 .validation_errors {
     color: red !important;
-    background-color: black !important;
+    background-color: white !important;
+    padding: 1%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 td.table-left {

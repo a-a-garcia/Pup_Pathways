@@ -9,9 +9,21 @@ def show_registration():
 
 @app.route('/submit_registration', methods=['POST'])
 def submit_registration():
-    if request.method == 'POST':
-        # For testing purposes, simply return a success message in JSON format
-        return jsonify({"message": "REGISTRATION SUCCESS"})
+    if not user.User.validate_user(request.form):
+        return redirect('/register')
+    user.User.create_user(request.form)
+    return redirect('/dashboard')
+
+@app.route('/login', methods=['POST'])
+def login():
+    if not user.User.parse_login_data(request.form):
+        return redirect('/')
+    user.User.parse_login_data(request.form)
+    return redirect('/dashboard')
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 # @app.route('/register/submit_user_info', methods=['POST'])
 # def submit_registration():
@@ -62,10 +74,6 @@ def submit_registration():
 
 #     return render_template('register.html')
 
-@app.route('/register/2')
-def show_registration_2():
-    return render_template('register_two.html')
-
 @app.route('/account_creation/success')
 def account_creation_success():
     return render_template("account_creation_success.html")
@@ -75,6 +83,11 @@ def account_creation_success():
 @app.route('/')
 def index():
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
 
 # Update Users Controller
 

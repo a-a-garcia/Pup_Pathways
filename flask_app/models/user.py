@@ -12,6 +12,7 @@ class User:
     db = "pup_pathways_test_db" #which database are you using for this project
     def __init__(self, data):
         self.id = data['id']
+        self.username = data['username']
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.email = data['email']
@@ -29,8 +30,8 @@ class User:
         form_data = form_data.copy()
         form_data['password'] = bcrypt.generate_password_hash(form_data['password'])
         query="""
-            INSERT INTO user (first_name, last_name, email, password)
-            VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s)
+            INSERT INTO user (username, first_name, last_name, email, password)
+            VALUES (%(username)s, %(first_name)s, %(last_name)s, %(email)s, %(password)s)
         ;"""
         new_users_id = connectToMySQL(cls.db).query_db(query, form_data)
         session['user_id'] = new_users_id
@@ -41,28 +42,38 @@ class User:
     @staticmethod
     def validate_user(user):
         isValid = True
+        if len(user['username']) < 2:
+            flash('Username must have at least 2 characters!')
+            isValid = False
+        if len(re.findall("_", user['username'])) > 2:
+            flash('**Username cannot have more than 2 underscores!')
+            isValid = False
+        if " " in user['username']:
+            flash('**Username cannot contain any spaces!')
+            isValid = False
+        if not re.match("^[a-zA-Z0-9_]+$", user['username']):
+            flash('**Username can only contain letters, numbers, and underscores!')
+
         if len(user['first_name']) < 2:
             flash('First name must be at least 2 characters.')
             isValid = False
-        if re.search(r'\d', user['first_name']):
-            flash('First name cannot have any numbers in it.')
+        if not re.match("^[a-zA-Z]+$", user['first_name']):
+            flash('**First name must only contain letters!')
             isValid = False
 
         if len(user['last_name']) < 2:
             flash('Last name must be at least 2 characters.')
             isValid = False
-        if re.search(r'\d', user['last_name']):
+        if not re.match("^[a-zA-Z]+$", user['last_name']):
             flash('Last name cannot have any numbers in it.')
             isValid = False
         
-        if len(user['email']) < 7: 
-            flash('Please enter a valid email address.')
-            isValid = False
+
         if not re.search(r'\d', user['password']):
             flash('Password must contain at least ONE (1) number.')
             isValid = False
-        if not re.search(r'[A-Z]', user['password']):
-            flash('Password must have at least ONE (1) uppercase letter.')
+        if not re.search(r'[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]', user['password']):
+            flash('**Password must contain at least 1 special character!')
             isValid = False
         else:
             EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') #email must have email expected characters
@@ -89,6 +100,29 @@ class User:
 
 
     # Read Users Models
+    @classmethod
+    def get_user_by_email(cls, email):
+        query ="""
+            SELECT * FROM user
+            WHERE email = %(email)s
+        ;"""
+        data = {'email' : email}
+        user_by_email = connectToMySQL(cls.db).query_db(query, data)
+        if user_by_email:
+            return cls(user_by_email[0])
+        return None
+    
+    @classmethod
+    def parse_login_data(cls, form_data):
+        this_user = User.get_user_by_email(form_data['email'])
+        if this_user:
+            if bcrypt.check_password_hash(this_user.password, form_data['password']):
+                session['user_id'] = this_user.id
+                session['user_first_name'] = this_user.first_name
+                session['user_last_name'] = this_user.last_name
+                return True
+        flash('**Invalid email or password.')
+        return False
 
 
 
