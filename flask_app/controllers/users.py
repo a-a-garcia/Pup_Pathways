@@ -23,7 +23,13 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
+    if 'user_id' not in session:
+        return redirect('/access_denied')
     return render_template('dashboard.html')
+
+@app.route('/access_denied')
+def access_denied():
+    return render_template('access_denied.html')
 
 # @app.route('/register/submit_user_info', methods=['POST'])
 # def submit_registration():
