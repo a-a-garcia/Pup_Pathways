@@ -247,3 +247,15 @@ table {
     border-radius: 50%;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
+
+/*dashboard/ map page
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+ gmp-map {
+    height: 800px;
+    width: 100%;
+  }
+
+  #map-wrapper {
+    width: 80%;
+  }
