@@ -256,6 +256,19 @@ table {
     width: 100%;
   }
 
-  #map-wrapper {
+  .map-wrapper {
+    width: 90%;
+  }
+  
+  #map {
     width: 80%;
+  }
+
+  #map-actions {
+    width: 25%;
+    background: #FEE9AD;
+  }
+
+  .map-button {
+    font-size: 48px !important; 
   }

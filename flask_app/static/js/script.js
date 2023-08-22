@@ -21,9 +21,30 @@ function initMap() {
             title: 'Your Location',
         });
 
+        const drawingManager = new google.maps.drawing.DrawingManager({
+            drawingMode: google.maps.drawing.OverlayType.POLYLINE,
+            drawingControl: true,
+            drawingControlOptions: {
+                position: google.maps.ControlPosition.TOP_CENTER,
+                drawingModes: [google.maps.drawing.OverlayType.POLYLINE],
+            },
+            polylineOptions: {
+                editable: true,  // Allow users to edit the path
+            },
+        });
+        
+        // Add the DrawingManager to the map
+        drawingManager.setMap(map);
+        console.log("drawingManager loaded.")
+        // Listen for path completion event
+        google.maps.event.addListener(drawingManager, 'polylinecomplete', function(polyline) {
+            // Do something with the completed polyline (path)
+        });
+
         // You can add additional map customizations and functionality here
     }, function() {
         // Handle geolocation errors here (e.g., user denied location access)
         console.error('Error: The Geolocation service failed or is disabled.');
     });
 }
+
