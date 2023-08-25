@@ -19,6 +19,7 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.paths = []
         # What changes need to be made above for this project?
         #What needs to be added her for class association?
 
