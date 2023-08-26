@@ -25,6 +25,38 @@ function initMap() {
                 title: 'Your Location',
             });
 
+            refreshLocationButton.addEventListener('click', function() {
+                // Request the user's location when the button is clicked
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const userLatLng = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+        
+                        // Update the map or perform any other actions with the new location data
+                        const map = new google.maps.Map(
+                            document.getElementById('map'),
+                            {
+                                center: userLatLng,
+                                zoom: 19,
+                            }
+                        );
+        
+                        // Optionally, update the marker or perform other actions as needed
+                        const marker = new google.maps.Marker({
+                            position: userLatLng,
+                            map: map,
+                            title: 'Your Location',
+                        });
+                    },
+                    function() {
+                        // Handle geolocation errors here if needed
+                        console.error('Error: The Geolocation service failed or is disabled.');
+                    }
+                );
+            });
+
             const drawingManager = new google.maps.drawing.DrawingManager({ //initialize
                 drawingControlOptions: { //configures appearance/position of drawing controls
                     position: google.maps.ControlPosition.TOP_CENTER, //sets position of controls
@@ -63,19 +95,48 @@ function initMap() {
                 }
             });
 
-            google.maps.event.addListener(drawingManager, 'polylinecomplete', function(polyline) {
-                const path = polyline.getPath(); // Get the path of the completed polyline
-                
-                path.forEach(function(point, index) {
-                console.log(`Point ${index + 1} - Latitude: ${point.lat()}, Longitude: ${point.lng()}`);
-                });
+            const confirmationModal = document.getElementById('confirmationModal');
+            const confirmButton = document.getElementById('confirmButton');
+            const cancelButton = document.getElementById('cancelButton');
+            const pathCoordinatesInput = document.getElementById('pathCoordinatesInput')
+
+            let pendingPath = null //store pending polyline
+            google.maps.event.addListener(drawingManager, 'polylinecomplete', function(polyline) { //when polyline finishes drawing...
+                pendingPath = polyline;
+
+                confirmationModal.style.display = "block";
             });
+
+            confirmButton.addEventListener('click', function() {
+                confirmationModal.style.display = "none";
+                if (pendingPath) {
+                    const pathCoordinates = pendingPath.getPath().getArray(); // Get the path of the completed polyline
+                    //set/ update value of hidden input field (it's initially nothing) with JSON string of path coorindates
+                    pathCoordinatesInput.value = JSON.stringify(pathCoordinates)
+                    console.log(JSON.stringify(pathCoordinates))
+                    //submit form
+                    document.getElementById('pathForm').submit();
+                }
+            })
+
+            cancelButton.addEventListener('click', function () {
+                // User clicked "Cancel"
+                
+                // Close the modal
+                confirmationModal.style.display = 'none';
             
+                // Remove the pending polyline from the map
+                if (pendingPath) {
+                    pendingPath.setMap(null);
+                }
+            });
             // You can add additional map customizations and functionality here
         }, 
         function() { //failure callback
         // Handle geolocation errors here (e.g., user denied location access)
         console.error('Error: The Geolocation service failed or is disabled.');
+        
     });
 }
+
 

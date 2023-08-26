@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, jsonify
-from flask_app.models import user #import entire file, rather than class, to avoid circular imports. may need to import more than one file if you have multiple tables.
+from flask_app.models import user, path #import entire file, rather than class, to avoid circular imports. may need to import more than one file if you have multiple tables.
+
 
 # Create Users Controller
 @app.route('/register')
@@ -25,7 +26,15 @@ def login():
 def dashboard():
     if 'user_id' not in session:
         return redirect('/access_denied')
+    print(session['user_id'])
     return render_template('dashboard.html')
+
+# @app.route('/get_user_id', methods=['GET'])
+# def get_user_id():
+#     if 'user_id' not in session:
+#         return redirect('/access_denied')
+#     user_id = session.get('user_id')
+#     return jsonify({'user_id' : user_id})
 
 @app.route('/access_denied')
 def access_denied():

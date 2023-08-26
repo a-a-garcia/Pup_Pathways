@@ -38,6 +38,15 @@
                 <div>
                     <button class="btn btn-danger map-button">Go to your profile</button>
                 </div>
+                <hr style="height: 5px;
+                background-color: rgba(23, 79, 124, 0.9);
+                width: 90%;
+                margin: 20px 0;
+                box-shadow: 0px 0px 4px 2px rgba(204,204,204,1);">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <p style="font-style: italic;">Map not locating you correctly?</p>
+                    <button class="btn btn-danger map-button" id="refreshLocationButton">Refresh Location</button>
+                </div>
             </div>
             <div class="card" style="width:70%">
                 <div class="card-header" style="background-color: currentColor;">
@@ -46,6 +55,19 @@
                 <div class="card-body" style="height: 1000px; width: 100%" id="map">
                 </div>
             </div>
-        </div>        
+        </div>
+    </div>
+    <form id="pathForm" action="/process_path" method="POST">
+        <!-- Other form fields go here, if any -->
+        <input type="hidden" name="user_id" value="{{session['user_id']}}">
+        <!-- Hidden input to store pathCoordinates -->
+        <input type="hidden" id="pathCoordinatesInput" name="coordinates" value="">
+    </form>
+    <div id="confirmationModal" class="modal-overlay">
+        <div class="modal modal-content">
+            <p>Are you sure you want to commit this path to the map?</p>
+            <button id="confirmButton" class="btn btn-success">Continue</button>
+            <button id="cancelButton" class="btn btn-danger">Cancel</button>
+        </div>
     </div>
 </body>
