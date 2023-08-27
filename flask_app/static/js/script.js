@@ -131,6 +131,42 @@ function initMap() {
                 }
             });
             // You can add additional map customizations and functionality here
+            
+            //accepts a map to draw on and the paths data to be passed in
+            function fetchCurrentPaths(map, paths_data) {
+                paths_data.forEach(pathEntry => {
+                    const coordinates = pathEntry.coordinates; // No need for JSON.parse
+                    console.log(pathEntry)
+                    // create the polylines
+                    const path_line = new google.maps.Polyline({
+                        path: coordinates, // Directly use coordinates
+                        geodesic: true,
+                        strokeColor: '#0000FF', // Adjust the color as needed
+                        strokeOpacity: 1.0,
+                        strokeWeight: 5, // Adjust the weight as needed
+                        map: map,
+                    });
+                    
+                    //fetch user information for path
+                    const userId = pathEntry.user_id;
+                    console.log(`USERID FOR THIS PATH: ${userId}`)
+                    fetch(`/get_user_info/${userId}`)
+                        .then(response => response.json())
+                        .then(user => {
+                            //once we have user info, we can display it when path is clicked
+                            path_line.addListener('click', function() {
+                                console.log('IM CLICKED!')
+                                console.log(`${user.first_name}, ${pathEntry.created_at}`)
+                                const infoWindow = new google.maps.InfoWindow({
+                                    content: `Created by: ${user.first_name}<br>Created at: ${pathEntry.created_at}`,
+                                    maxWidth: 200
+                                });
+                                infoWindow.open(map, path_line)
+                            });
+                        })
+                });
+            }
+            fetchCurrentPaths(map, all_paths_data)
         }, 
         function() { //failure callback
         // Handle geolocation errors here (e.g., user denied location access)

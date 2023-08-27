@@ -1,4 +1,3 @@
-from flask import app
 from flask_app.config.mysqlconnection import connectToMySQL
 
 class Path:
@@ -19,3 +18,12 @@ class Path:
         new_path_id = connectToMySQL(cls.db).query_db(query, form_data)
         print(new_path_id)
         return new_path_id
+
+    @classmethod
+    def show_all_paths(cls):
+        query = """
+            SELECT *
+            FROM path
+        """
+        all_paths = connectToMySQL(cls.db).query_db(query)
+        return all_paths

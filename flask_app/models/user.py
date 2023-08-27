@@ -125,6 +125,20 @@ class User:
         flash('**Invalid email or password.')
         return False
 
+    @classmethod
+    def get_user_by_id(cls, id):
+        data = {'id' : id}
+        query = """
+            SELECT *
+            FROM user
+            WHERE user.id = %(id)s
+        """
+        single_user = connectToMySQL(cls.db).query_db(query, data)
+        if single_user:
+            user_info = single_user[0]
+            return User(user_info)
+        else:
+            return None
 
 
     # Update Users Models
