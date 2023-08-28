@@ -137,6 +137,7 @@ function initMap() {
                 paths_data.forEach(pathEntry => {
                     const coordinates = pathEntry.coordinates; // No need for JSON.parse
                     console.log(pathEntry)
+
                     // create the polylines
                     const path_line = new google.maps.Polyline({
                         path: coordinates, // Directly use coordinates
@@ -147,19 +148,39 @@ function initMap() {
                         map: map,
                     });
                     
+                    //calculate the midpoint of the polyline (to position the infoWindow properly once the path is clicked)
+                    function calculateMidPoint(coordinates) {
+                        if (coordinates.length === 0) {
+                            return { lat: 0, lng: 0}
+                        }
+
+                        let latSum = 0;
+                        let lngSum = 0;
+
+                        for (const coordinate of coordinates) {
+                            latSum += coordinate.lat;
+                            lngSum += coordinate.lng;
+                        }
+
+                        const midLat = latSum / coordinates.length;
+                        const midLng = lngSum / coordinates.length;
+
+                        return { lat: midLat, lng: midLng}
+                    }
+
                     //fetch user information for path
                     const userId = pathEntry.user_id;
-                    console.log(`USERID FOR THIS PATH: ${userId}`)
                     fetch(`/get_user_info/${userId}`)
                         .then(response => response.json())
                         .then(user => {
                             //once we have user info, we can display it when path is clicked
+                            const midPoint = calculateMidPoint(coordinates)
                             path_line.addListener('click', function() {
-                                console.log('IM CLICKED!')
-                                console.log(`${user.first_name}, ${pathEntry.created_at}`)
+                                const contentString = `<p>` + `PATH DETAILS:` + `</p>` + `<p>Created by: ${user.first_name}` + `</p>` + `<p>` + `Created at: ${pathEntry.created_at}` + `</p>`
                                 const infoWindow = new google.maps.InfoWindow({
-                                    content: `Created by: ${user.first_name}<br>Created at: ${pathEntry.created_at}`,
-                                    maxWidth: 200
+                                    content: contentString,
+                                    maxWidth: 200,
+                                    position: midPoint
                                 });
                                 infoWindow.open(map, path_line)
                             });
