@@ -46,3 +46,7 @@ MINIMUM VIABLE PRODUCT FEATURES
 
 in the context of OOP, need a class People() and class Pet()
 
+BACKLOG
+
+--ADD ABILITY TO SHOW CLOSEST DOG PARK 
+--ABILITY TO CREATE EVENTS?
