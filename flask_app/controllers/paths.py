@@ -1,4 +1,5 @@
 from flask_app import app
+import os
 from flask import render_template, redirect, request, session, jsonify, json
 from flask_app.models import path, user #import entire file, rather than class, to avoid circular imports. may need to import more than one file if you have multiple tables.
 
@@ -12,6 +13,9 @@ def dashboard():
     if 'user_id' not in session:
         return redirect('/access_denied')
     print("user_id in session: " + str(session['user_id']))
+
+    api_key = os.getenv("API_KEY")
+
     #fetch paths from db
     all_paths = path.Path.show_all_paths()
     #create a list to store formatted path data
@@ -29,4 +33,4 @@ def dashboard():
         all_paths_data.append(formatted_path)
         
     print(all_paths_data)
-    return render_template('dashboard.html', all_paths_data=all_paths_data)
+    return render_template('dashboard.html', api_key=api_key, all_paths_data=all_paths_data)

@@ -1,3 +1,4 @@
+
 function initMap() {
         console.log('initMap function called');
         // Your map initialization code here
@@ -195,5 +196,7 @@ function initMap() {
         
     });
 }
+initMap()
+
 
 
