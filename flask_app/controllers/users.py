@@ -11,9 +11,9 @@ def show_registration():
 @app.route('/submit_registration', methods=['POST'])
 def submit_registration():
     if not user.User.validate_user(request.form):
-        return redirect('/register')
+        return jsonify({'success' : False, 'message' : 'Validation failed'})
     user.User.create_user(request.form)
-    return redirect('/dashboard')
+    return jsonify({'success' : True, 'message' : 'Registration successful'})
 
 @app.route('/login', methods=['POST'])
 def login():
